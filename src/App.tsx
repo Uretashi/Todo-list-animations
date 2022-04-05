@@ -29,8 +29,14 @@ export default class App extends React.Component {
                       <Link to="/" className="nav-link active">Home</Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/" className="nav-link">Link</Link>
-                    </li>               
+                      <Link to="/todo-list-css" className="nav-link">Pure CSS</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/todo-list-css-class" className="nav-link">Per CSS Class</Link>
+                    </li>   
+                    <li className="nav-item">
+                      <Link to="/todo-list-library" className="nav-link">Per Library</Link>
+                    </li>              
                   </ul>
                 </div>
               </div>
