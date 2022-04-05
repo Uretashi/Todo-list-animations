@@ -1,0 +1,75 @@
+.App{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10em;
+    align-items: center;
+    padding: 2em;
+}
+
+.todo-main-div{
+}
+
+.add-todo-form{
+    border: 4px solid #212121;
+}
+
+.add-todo-form>label{
+    background-color: #212121;
+    border-right: 4px solid #212121;
+    padding: 1em 2em;
+    font-weight: bold;
+    color: #FAFAFA;
+    margin-right: 1em;
+}
+
+.add-todo-input{
+    width: 40em;
+    border: none;
+    outline: none;
+}
+
+.add-todo-btn{
+
+    border: none;
+    border-left: 4px solid #212121;
+    padding: 1em 2em;
+    background-color: #212121;
+    color: #FAFAFA;
+    transition: all 1s ease-in-out;
+}
+
+.add-todo-btn:hover{
+    color: #212121;
+    background-color: #EEEEEE;
+}
+
+.todo-object{
+    height: 3em;
+    width: 30em;
+    padding-bottom: 4em;
+    margin: 4em 0;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    border-bottom: 2px solid #9E9E9E;
+    transition: all 0.5s ease-in-out;
+}
+
+.todo-object:last-child{
+    border: none;
+}
+
+.todo-object>p{
+    margin: 0;
+}
+
+.todo-object>button{
+    width: 32px;
+    height: 32px;
+    background-color: #212121;
+    border: none;
+    color: #FAFAFA;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+}

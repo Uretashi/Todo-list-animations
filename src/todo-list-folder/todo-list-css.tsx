@@ -1,7 +1,9 @@
 import React from 'react';
+import './todo-list-css.css';
 
 
 export default class TodoListCss extends React.Component<{}, { addTodo: string, todoList: Array<string> }> {
+    test: number = 1;
 
     constructor(props: any) {
         super(props);
@@ -18,9 +20,16 @@ export default class TodoListCss extends React.Component<{}, { addTodo: string, 
      * @param index élement à supprimé
      * @returns void
      */
-    deleteTodoElement(index: number): void {
-        this.state.todoList.splice(index, 1);
-        this.setState({});
+    deleteTodoElement(index: number, event:any): void {
+        // this.test = 0
+        event.target.style.transform = 'translateX(180px)'
+        event.target.parentNode.style.opacity = 0
+
+        setTimeout(() => {
+            this.state.todoList.splice(index, 1);
+            this.setState({});
+        }, 500);
+        
     }
 
     /**
@@ -43,7 +52,7 @@ export default class TodoListCss extends React.Component<{}, { addTodo: string, 
         // reset la valeur de l'input
         event.target.reset();
 
-        if(this.state.addTodo != '') {
+        if(this.state.addTodo !== '') {
             this.setState({ addTodo: '', todoList: [...this.state.todoList, this.state.addTodo] });
         }
         event.preventDefault();
@@ -53,21 +62,21 @@ export default class TodoListCss extends React.Component<{}, { addTodo: string, 
         return (
             <div className="App">
                 <div className="todo-main-div">
-                    <div className="todo-main-object">
-                        {this.state.todoList.map((todoName: string, index: number) => {
-                            return (
-                                <div key={todoName} className="todo-object">
-                                    <p>{todoName}</p>
-                                    <button onClick={() => this.deleteTodoElement(index)}>X</button>
-                                </div>
-                            )
-                        })}
-                    </div>
                     <form className="add-todo-form" onSubmit={this.handleSubmit}>
-                        <label>Todo : </label>
-                        <input name="todoName" type="text" onChange={this.handleChange} />
-                        <input value={'Ajouter'} type="submit" />
+                        <label htmlFor='todoName'>Todo : </label>
+                        <input className="add-todo-input" placeholder="Add your task" name="todoName" type="text" onChange={this.handleChange} />
+                        <input className="add-todo-btn" value={'Ajouter'} type="submit" />
                     </form>
+                </div>
+                <div className="todo-main-object">
+                    {this.state.todoList.map((todoName: string, index: number) => {
+                        return (
+                            <div key={todoName} className="todo-object">
+                                <button onClick={(e) => this.deleteTodoElement(index,e)}>X</button>
+                                <p>{todoName}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         )
