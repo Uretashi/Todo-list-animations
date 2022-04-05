@@ -43,7 +43,9 @@ export default class TodoListCss extends React.Component<{}, { addTodo: string, 
         // reset la valeur de l'input
         event.target.reset();
 
-        this.setState({ todoList: [...this.state.todoList, this.state.addTodo] });
+        if(this.state.addTodo != '') {
+            this.setState({ addTodo: '', todoList: [...this.state.todoList, this.state.addTodo] });
+        }
         event.preventDefault();
     }
 
