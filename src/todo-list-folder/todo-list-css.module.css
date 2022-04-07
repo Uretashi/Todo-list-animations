@@ -1,4 +1,4 @@
-.App{
+.App {
     height: 95vh;
     display: flex;
     flex-direction: column;
@@ -7,14 +7,13 @@
     padding: 2em;
 }
 
-.todoMainDiv{
-}
+.todoMainDiv {}
 
-.addTodoForm{
+.addTodoForm {
     border: 4px solid #212121;
 }
 
-.addTodoForm>label{
+.addTodoForm>label {
     background-color: #212121;
     border-right: 4px solid #212121;
     padding: 1em 2em;
@@ -23,13 +22,13 @@
     margin-right: 1em;
 }
 
-.addTodoInput{
+.addTodoInput {
     width: 40em;
     border: none;
     outline: none;
 }
 
-.addTodoBtn{
+.addTodoBtn {
 
     border: none;
     border-left: 4px solid #212121;
@@ -39,12 +38,12 @@
     transition: all 1s ease-in-out;
 }
 
-.addTodoBtn:hover{
+.addTodoBtn:hover {
     color: #212121;
     background-color: #EEEEEE;
 }
 
-.todoObject{
+.todoObject {
     height: 3em;
     width: 30em;
     padding-bottom: 4em;
@@ -53,23 +52,44 @@
     align-items: center;
     gap: 2em;
     border-bottom: 2px solid #9E9E9E;
-    transition: all 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.todoObject:last-child{
+.todoObject:last-child {
     border: none;
 }
 
-.todoObject>p{
+.todoObject>p {
     margin: 0;
 }
 
-.todoObject>button{
+.todoObject>button {
     width: 32px;
     height: 32px;
     background-color: #212121;
     border: none;
     color: #FAFAFA;
     font-weight: bold;
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+}
+
+.newTaskAnimation{
+    animation: 2s pulse;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+    80%{
+        opacity: 0;
+        transform: scale(0.80);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
