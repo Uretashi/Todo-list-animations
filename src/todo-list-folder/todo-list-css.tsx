@@ -37,10 +37,31 @@ function TodoListCss() {
         event.target.style.transform = "translateX(180px)";
         event.target.parentNode.style.opacity = 0;
 
+        console.log(event.target.parentNode);
+
         setTimeout(() => {
             todoList.splice(index, 1);
             setTodoList([...todoList]);
         }, 500);
+    };
+
+    const handleEdit = (event: any, index: number): void => {
+        todoList[index] = event.target.value;
+        setTodoList([...todoList]);
+    };
+
+    /**
+     * masque le bouton edit, et affiche l'input de modification
+     *
+     * @param {any} event événement ayant invoqué la fonction
+     * @returns void
+     */
+    const showEditInput = (event: any): void => {
+        if (event.currentTarget.parentNode.childNodes[3].hidden) {
+            event.currentTarget.parentNode.childNodes[3].hidden = false;
+        } else {
+            event.currentTarget.parentNode.childNodes[3].hidden = true;
+        }
     };
 
     /**
@@ -67,14 +88,16 @@ function TodoListCss() {
         if (addTodo !== "") {
             setTodoList([...todoList, addTodo]);
             setAddTodo("");
+
+            setTimeout(() => {
+                const newTaskAnimation = document.querySelector(
+                    "." + style.todoObject + ":last-child"
+                );
+                newTaskAnimation?.classList.add(style.newTaskAnimation);
+            }, 1);
         }
 
         event.preventDefault();
-
-        setTimeout(() => {
-            const newTaskAnimation = document.querySelector("." + style.todoObject + ":last-child");
-            newTaskAnimation?.classList.add(style.newTaskAnimation);
-        }, 1);
     };
 
     return (
@@ -83,9 +106,25 @@ function TodoListCss() {
             <div className={style.todoMainObject}>
                 {todoList.map((todoName: string, index: number) => {
                     return (
-                        <div key={todoName + index} className={style.todoObject}>
-                            <button onClick={(e) => deleteTodoElement(index, e)}>X</button>
+                        <div key={`${index}_${todoName}`} className={style.todoObject}>
+                            <button
+                                className={style.deleteBtn}
+                                onClick={(e) => deleteTodoElement(index, e)}
+                            >
+                                X
+                            </button>
+                            <button className={style.updateBtn} onClick={showEditInput}>
+                                Edit
+                            </button>
+
                             <p>{todoName}</p>
+                            <input
+                                hidden={true}
+                                className={style.updateInput}
+                                value={todoName}
+                                type="text"
+                                onChange={(e) => handleEdit(e, index)}
+                            />
                         </div>
                     );
                 })}

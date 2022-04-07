@@ -42,11 +42,11 @@
 }
 
 .todoObject {
+    display: flex;
     height: 3em;
-    width: 30em;
+    width: 40em;
     padding-bottom: 4em;
     margin: 4em 0;
-    display: flex;
     align-items: center;
     gap: 2em;
     border-bottom: 2px solid #9E9E9E;
@@ -58,21 +58,55 @@
 }
 
 .todoObject>p {
+    width: 40%;
     margin: 0;
+    overflow-wrap: break-word;
 }
 
-.todoObject>button {
+.deleteBtn{
     width: 32px;
     height: 32px;
     background-color: #212121;
     border: none;
     color: #FAFAFA;
     font-weight: bold;
-    transition: transform 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.updateBtn{
+    height: 32px;
+    background-color: #212121;
+    border: none;
+    color: #FAFAFA;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+}
+
+.deleteBtn:hover{
+    background-color: #C62828;
+}
+
+.updateBtn:hover{
+    background-color: #FBC02D;
+}
+
+.updateInput{
+    animation: 2s moulin;
 }
 
 .newTaskAnimation{
     animation: 2s pulse;
+}
+
+@keyframes moulin {
+    from{
+        opacity: 0;
+    }
+    to{
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+    
 }
 
 @keyframes pulse {
