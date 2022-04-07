@@ -25,6 +25,29 @@ export default class TodoListLibrary extends React.Component<{}, { addTodo: stri
     }
 
     /**
+     * modifie la valeur d'un élément todo
+     * 
+     * @param event événement ayant invoqué la fonction (input)
+     * @param index index de l'élément todo à modifier
+     */
+    editTodo(event: any, index: number): void {
+        this.state.todoList[index] = event.target[0].value;
+        this.setState({});
+        event.preventDefault();
+    }
+
+    /**
+     * masque le bouton edit, et affiche l'input de modification
+     * 
+     * @param {any} event événement ayant invoqué la fonction
+     * @returns void
+     */
+    showEditInput(event: any): void {
+        event.currentTarget.parentNode.firstElementChild.hidden = false;
+        event.currentTarget.parentNode.childNodes[1].hidden = true;
+    }
+
+    /**
      * Modifie la valeur de addTodo pour préparer cette dernière à être ajoutée à la liste
      * 
      * @param event événement ayant invoqué la fonction (input)
@@ -59,7 +82,6 @@ export default class TodoListLibrary extends React.Component<{}, { addTodo: stri
                     <div className="todo-main-object">
                         <AnimatePresence>
                             {this.state.todoList.map((todoName: string, index: number) => {
-                                console.log(todoName)
                                 return (
                                     <motion.div
                                         key={`${todoName + index}`}
@@ -67,8 +89,17 @@ export default class TodoListLibrary extends React.Component<{}, { addTodo: stri
                                         exit={{ height: 0, y: [0, -200], opacity: 0, transition: { delay: 0.3 } }}
                                     >
                                         <div key={todoName} className="d-flex justify-content-between bg-white p-3 bg-opacity-25 rounded shadow bg-body">
-                                            <p className="h4 mb-0">{todoName}</p>
-                                            <button className="btn btn-danger" onClick={() => this.deleteTodoElement(index)}>X</button>
+                                            <div>
+                                                <p className="h4 mb-0">{todoName}</p>
+                                            </div>
+                                            <div className="d-flex">
+                                                <form hidden className="mt-1" onSubmit={(event) => this.editTodo(event, index)}>
+                                                    <input className="border-0 rounded me-2" defaultValue={todoName} type="text" />
+                                                    <input style={{ height: 30 }} className="border-0 rounded btn-dark px-3" value={'Modifier'} type="submit" />
+                                                </form>
+                                                <button className="btn btn-danger" onClick={this.showEditInput}>Edit</button>
+                                                <button className="btn btn-danger ms-3" onClick={() => this.deleteTodoElement(index)}>X</button>
+                                            </div>
                                         </div>
                                         <div className='mb-3'></div>
                                     </motion.div>
