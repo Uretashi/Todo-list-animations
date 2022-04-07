@@ -55,7 +55,14 @@ export default class TodoListCss extends React.Component<{}, { addTodo: string, 
         if(this.state.addTodo !== '') {
             this.setState({ addTodo: '', todoList: [...this.state.todoList, this.state.addTodo] });
         }
+
         event.preventDefault();
+
+        
+        setTimeout(() => {
+            const newTaskAnimation = document.querySelector('.'+style.todoObject+":last-child");
+            newTaskAnimation?.classList.add(style.newTaskAnimation)
+        }, 1)
     }
 
     render() {
