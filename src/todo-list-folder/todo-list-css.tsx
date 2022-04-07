@@ -1,5 +1,5 @@
 import React from 'react';
-import './todo-list-css.css';
+import style from './todo-list-css.module.css';
 
 
 export default class TodoListCss extends React.Component<{}, { addTodo: string, todoList: Array<string> }> {
@@ -60,18 +60,18 @@ export default class TodoListCss extends React.Component<{}, { addTodo: string, 
 
     render() {
         return (
-            <div className="App">
-                <div className="todo-main-div">
-                    <form className="add-todo-form" onSubmit={this.handleSubmit}>
+            <div className={style.App}>
+                <div className={style.todoMainDiv}>
+                    <form className={style.addTodoForm} onSubmit={this.handleSubmit}>
                         <label htmlFor='todoName'>Todo : </label>
-                        <input className="add-todo-input" placeholder="Add your task" name="todoName" type="text" onChange={this.handleChange} />
-                        <input className="add-todo-btn" value={'Ajouter'} type="submit" />
+                        <input className={style.addTodoInput} placeholder="Add your task" name="todoName" type="text" onChange={this.handleChange} />
+                        <input className={style.addTodoBtn} value={'Ajouter'} type="submit" />
                     </form>
                 </div>
-                <div className="todo-main-object">
+                <div className={style.todoMainObject}>
                     {this.state.todoList.map((todoName: string, index: number) => {
                         return (
-                            <div key={todoName} className="todo-object">
+                            <div key={todoName} className={style.todoObject}>
                                 <button onClick={(e) => this.deleteTodoElement(index,e)}>X</button>
                                 <p>{todoName}</p>
                             </div>

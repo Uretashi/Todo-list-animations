@@ -7,14 +7,14 @@
     padding: 2em;
 }
 
-.todo-main-div{
+.todoMainDiv{
 }
 
-.add-todo-form{
+.addTodoForm{
     border: 4px solid #212121;
 }
 
-.add-todo-form>label{
+.addTodoForm>label{
     background-color: #212121;
     border-right: 4px solid #212121;
     padding: 1em 2em;
@@ -23,13 +23,13 @@
     margin-right: 1em;
 }
 
-.add-todo-input{
+.addTodoInput{
     width: 40em;
     border: none;
     outline: none;
 }
 
-.add-todo-btn{
+.addTodoBtn{
 
     border: none;
     border-left: 4px solid #212121;
@@ -39,12 +39,12 @@
     transition: all 1s ease-in-out;
 }
 
-.add-todo-btn:hover{
+.addTodoBtn:hover{
     color: #212121;
     background-color: #EEEEEE;
 }
 
-.todo-object{
+.todoObject{
     height: 3em;
     width: 30em;
     padding-bottom: 4em;
@@ -56,15 +56,15 @@
     transition: all 0.5s ease-in-out;
 }
 
-.todo-object:last-child{
+.todoObject:last-child{
     border: none;
 }
 
-.todo-object>p{
+.todoObject>p{
     margin: 0;
 }
 
-.todo-object>button{
+.todoObject>button{
     width: 32px;
     height: 32px;
     background-color: #212121;
