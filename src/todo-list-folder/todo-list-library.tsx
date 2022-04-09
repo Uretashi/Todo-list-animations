@@ -31,7 +31,7 @@ export default class TodoListLibrary extends React.Component<{}, { addTodo: stri
      * @param index index de l'élément todo à modifier
      */
     editTodo(event: any, index: number): void {
-        this.state.todoList[index] = event.target[0].value;
+        this.state.todoList[index] = event.target.elements.edit.value
         this.setState({});
         event.preventDefault();
     }
@@ -90,11 +90,11 @@ export default class TodoListLibrary extends React.Component<{}, { addTodo: stri
                                     >
                                         <div key={todoName} className="d-flex justify-content-between bg-white p-3 bg-opacity-25 rounded shadow bg-body">
                                             <div>
-                                                <p className="h4 mb-0">{todoName}</p>
+                                                <p data-testid={todoName.toLowerCase().replace(/\s/g, '_')} className="h4 mb-0">{todoName}</p>
                                             </div>
                                             <div className="d-flex">
-                                                <form hidden className="mt-1" onSubmit={(event) => this.editTodo(event, index)}>
-                                                    <input className="border-0 rounded me-2" defaultValue={todoName} type="text" />
+                                                <form data-testid="changeTodoLabelForm" hidden className="mt-1" onSubmit={(event) => this.editTodo(event, index)}>
+                                                    <input name="edit" className="border-0 rounded me-2" defaultValue={todoName} type="text" />
                                                     <input style={{ height: 30 }} className="border-0 rounded btn-dark px-3" value={'Modifier'} type="submit" />
                                                 </form>
                                                 <button className="btn btn-danger" onClick={this.showEditInput}>Edit</button>
