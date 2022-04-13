@@ -1,0 +1,97 @@
+.todo-object.delete {
+    transition: all 0.9s ease;
+    /*top: -800px;
+    right: -500px;*/
+    position: relative;
+    height: 0px !important;
+    max-height: 0px !important;
+    overflow: hidden;
+}
+
+.todo-object{
+    transition: all 0.9s ease;
+    /* top: -0px;
+    right: -0px; */
+    position: relative;
+    height: 80px !important;
+    max-height: 80px !important;
+}
+
+.bouton{
+    top: -2px;
+    position: relative;
+}
+
+
+.todo-object{
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+        max-height: 0px !important;
+    }
+    to {
+        opacity:1;
+        min-height: 80px;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+        max-height: 0px !important;
+    }
+    to {
+        opacity:1;
+        min-height: 80px;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+        max-height: 0px !important;
+    }
+    to {
+        opacity:1;
+        min-height: 80px;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+        max-height: 0px !important;
+    }
+    to {
+        opacity:1;
+        min-height: 80px;
+    }
+}
+
+#divcontainer {
+    animation-duration: 0.9 s;
+    animation-name: newelement;
+    display: inline-block
+  }
+  
+  @keyframes newelement {
+    from {
+        transform: translateY(-100%);
+        top: -800px;
+        right: 500px;
+        max-height: 0px !important;
+    }  
+    to {
+        transform: translateY(0);
+        top: -0px;
+        right: -0px;
+        min-height: 80px;
+        height: 80px;
+    }
+}
+
+#conteneur{
+    min-height: 580px;
+}
