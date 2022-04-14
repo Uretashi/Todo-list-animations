@@ -37,11 +37,13 @@ function TodoListCss() {
         event.target.style.transform = "translateX(180px)";
         event.target.parentNode.style.opacity = 0;
 
-        console.log(event.target.parentNode);
-
         setTimeout(() => {
             todoList.splice(index, 1);
             setTodoList([...todoList]);
+
+            // Fix branlant
+            event.target.style.transform = "translateX(0px)"
+            event.target.parentNode.style.opacity = 1
         }, 500);
     };
 
@@ -58,8 +60,10 @@ function TodoListCss() {
      */
     const showEditInput = (event: any): void => {
         if (event.currentTarget.parentNode.childNodes[3].hidden) {
+            event.target.textContent = "End";
             event.currentTarget.parentNode.childNodes[3].hidden = false;
         } else {
+            event.target.textContent = "Edit"
             event.currentTarget.parentNode.childNodes[3].hidden = true;
         }
     };
@@ -106,7 +110,7 @@ function TodoListCss() {
             <div className={style.todoMainObject}>
                 {todoList.map((todoName: string, index: number) => {
                     return (
-                        <div key={`${index}_div`} data-testid={`${index}_div`} className={style.todoObject}>
+                        <div data-testid={index + '_div'} key={`${index}`} className={style.todoObject}>
                             <button
                                 data-testid={`${index}_delete`}
                                 className={style.deleteBtn}
@@ -120,6 +124,7 @@ function TodoListCss() {
 
                             <p>{todoName}</p>
                             <input
+                                data-testid='edit_input'
                                 hidden={true}
                                 className={style.updateInput}
                                 value={todoName}
