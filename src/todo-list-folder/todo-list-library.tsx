@@ -84,6 +84,7 @@ export default class TodoListLibrary extends React.Component<{}, { addTodo: stri
                             {this.state.todoList.map((todoName: string, index: number) => {
                                 return (
                                     <motion.div
+                                        data-testid={todoName.toLowerCase().replace(/\s/g, '_') + '_div'}
                                         key={`${todoName + index}`}
                                         animate={{ height: [0, 80], x: [300, 0], opacity: [0, 1], transition: { delay: ((index * 0.2) > 0.4) ? 0.5 : index * 0.2 } }}
                                         exit={{ height: 0, y: [0, -200], opacity: 0, transition: { delay: 0.3 } }}

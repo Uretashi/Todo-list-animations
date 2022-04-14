@@ -106,8 +106,9 @@ function TodoListCss() {
             <div className={style.todoMainObject}>
                 {todoList.map((todoName: string, index: number) => {
                     return (
-                        <div key={`${index}_${todoName}`} className={style.todoObject}>
+                        <div key={`${index}_div`} data-testid={`${index}_div`} className={style.todoObject}>
                             <button
+                                data-testid={`${index}_delete`}
                                 className={style.deleteBtn}
                                 onClick={(e) => deleteTodoElement(index, e)}
                             >
