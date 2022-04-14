@@ -22,6 +22,7 @@ export default class TodoListCssClass extends React.Component<{}, { addTodo: str
      * @returns void
      */
     deleteTodoElement(event: any, index: number): void {
+        //ajout de la classe "delete" sur les composants de l'éléments choisis
         event.target.parentNode.classList.add("delete")
         console.log(event.target.parentNode.classList)
         event.target.classList.add("delete")
@@ -29,6 +30,7 @@ export default class TodoListCssClass extends React.Component<{}, { addTodo: str
         
         console.log(event.target)
 
+        //Suppression de l'élément après la transition
         setTimeout(() => {
             this.state.todoList.splice(index, 1);
             this.setState({});
